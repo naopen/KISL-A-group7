@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>お店一覧</title>
+        <meta charset='utf-8'>
+    </head>
+    <body>
+        <header>
+            <div>
+                <a href="/home.html">検索画面に戻る</a>
+            </div>
+        </header>
+        <!-- デバッグ -->
+        <p> areas : {{ areas }} </p>
+        <p> budget : {{ budget }} </p>
+        <p>query : {{ query }}</p>
+        <!-- デバッグ -->
+        <hr>
+        {% for row in range(displays_count) %}
+        <div>
+            <div>
+                {{ displays_list[row][1] }}
+            </div>
+            <div>
+                {{ displays_list[row][2] }}
+            </div>
+            <div>
+                {{ displays_list[row][3] }}
+            </div>
+            <div>
+                {{ displays_list[row][4] }}
+            </div>
+            <div>
+                {{ displays_list[row][5] }}
+            </div>
+        </div>
+        <hr>
+        {% endfor %}
+        <footer>
+            <table class="footer">
+                <a>test version by tanebe</a>
+            </table>
+        </footer>
+    </body>
+</html>
