@@ -10,20 +10,22 @@
 		<div>
 			<h1>何食べる？</h1>
 			<form method="POST" action="basic_search">
-				<summary>予算はいくら？</summary>
-				<br>
+				<summary>入力してください</summary>
 				<table>
+					<tr><p>お店のエリア</p></tr>
 					<tr>
-						<div>
-							<input type="text" name="budget" placeholder="">
-							<label>円まで</label>
-						</div>
+						<label><input type="checkbox" name="area" value="1">エリアA</label>
+						<label><input type="checkbox" name="area" value="2">エリアB</label>
+						<label><input type="checkbox" name="area" value="3">エリアC</label>
+						<label><input type="checkbox" name="area" value="4">エリアD</label>
+						<label><input type="checkbox" name="area" value="5">エリアE</label>
 					</tr>
+					<tr><p>予算はいくら？</p></tr>
 					<tr>
-						<div>
-							<input type="submit" value="submit">
-						</div>
+						<input type="text" name="budget" placeholder="">
+						<label>円まで</label>
 					</tr>
+					<tr><p><input type="submit" value="submit"></p></tr>
 				</table>
 			</form>
 			<hr>
