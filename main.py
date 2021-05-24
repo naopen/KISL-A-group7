@@ -10,7 +10,6 @@ def is_int(s):
         
 def make_query(budget,areas):
     query = "select * from tabemono "
-
     area_list = []
     a_num = 0
     for area in areas:
