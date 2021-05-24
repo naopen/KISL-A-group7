@@ -5,11 +5,9 @@
 		<meta name="keywords" content="">
 		<meta name="author" content="">
 		<title>何食べる？</title>
-
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
 		<script type="text/javascript" src="{{ url_for('static', filename='js/home.js') }}"></script>"
-
 	</head>
 	<body>
 		<div class="container">
@@ -24,26 +22,32 @@
 				</div>
 			</header>
 			<form method="POST" action="basic_search">
-				<h2>予算はいくら？</h2>
-				<br>
+				<summary>入力してください</summary>
 				<table>
+					<tr><p>お店のエリア</p></tr>
 					<tr>
-						<div>
-							<input type="text" name="budget" placeholder="">
-							<label>円まで</label>
-						</div>
+						<label><input type="checkbox" name="area" value="1">春日1・2丁目</label>
+						<label><input type="checkbox" name="area" value="2">春日3丁目</label>
+						<label><input type="checkbox" name="area" value="3">春日4丁目</label>
+						<label><input type="checkbox" name="area" value="4">吾妻・竹園(つくばセンター周辺)</label>
+						<label><input type="checkbox" name="area" value="5">天久保1丁目</label>
+						<label><input type="checkbox" name="area" value="6">天久保2丁目</label>
+						<label><input type="checkbox" name="area" value="7">天久保3丁目</label>
+						<label><input type="checkbox" name="area" value="8">桜・天久保4丁目</label>
+						<label><input type="checkbox" name="area" value="9">車が必須なエリア</label>
 					</tr>
+					<tr><p>予算はいくら？</p></tr>
 					<tr>
-						<div>
-							<input type="submit" value="submit">
-						</div>
+						<input type="text" name="budget" placeholder="">
+						<label>円まで</label>
 					</tr>
+					<tr><p><input type="submit" value="submit"></p></tr>
 				</table>
 			</form>
 			<hr>
-			<footer>
-				<p>&copy; group7</p>
-			</footer>
+			<div>
+				<a>&copy; group7</a>
+			</div>
 		</div>
 	</body>
 </html>
