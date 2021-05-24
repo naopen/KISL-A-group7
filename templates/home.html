@@ -5,10 +5,22 @@
 		<meta name="keywords" content="">
 		<meta name="author" content="">
 		<title>何食べる？</title>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+		<script type="text/javascript" src="{{ url_for('static', filename='js/home.js') }}"></script>"
 	</head>
 	<body>
-		<div>
-			<h1>何食べる？</h1>
+		<div class="container">
+			<header>
+				<div class="row">
+					<div class="col-sm-8">
+						<h1>何食べる？</h1>
+					</div>
+					<div class="col-sm-4">
+						<p id="currentTime">時刻</p>
+					</div>
+				</div>
+			</header>
 			<form method="POST" action="basic_search">
 				<summary>入力してください</summary>
 				<table>
@@ -34,7 +46,7 @@
 			</form>
 			<hr>
 			<div>
-				<a>test version by tanebe</a>
+				<a>&copy; group7</a>
 			</div>
 		</div>
 	</body>
