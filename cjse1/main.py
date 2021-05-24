@@ -9,36 +9,56 @@ def is_int(s):
         return False
         
 def make_query(budget,areas):
-    query = "select * from test "
+    query = "select * from tabemono "
 
     area_list = []
     a_num = 0
     for area in areas:
       if area == "1":
-        area_list.append('エリアA')
+        area_list.append('春日1・2丁目')
         a_num += 1
       else:
         a_num = a_num 
       if area == "2":
-        area_list.append('エリアB')
+        area_list.append('春日3丁目')
         a_num += 1
       else:
         a_num = a_num
       if area == "3":
-        area_list.append('エリアC')
+        area_list.append('春日4丁目')
         a_num += 1
       else:
         a_num = a_num
       if area == "4":
-        area_list.append('エリアD')
+        area_list.append('吾妻・竹園(つくばセンター周辺)')
         a_num += 1
       else:
         a_num = a_num
       if area == "5":
-        area_list.append('エリアE')
+        area_list.append('天久保1丁目')
         a_num += 1
       else:
         a_num = a_num
+      if area == "6":
+        area_list.append('天久保2丁目')
+        a_num += 1
+      else:
+        a_num = a_num
+      if area == "7":
+        area_list.append('天久保3丁目')
+        a_num += 1
+      else:
+        a_num = a_num
+      if area == "8":
+        area_list.append('桜・天久保4丁目')
+        a_num += 1
+      else:
+        a_num = a_num
+      if area == "9":
+        area_list.append('車が必須なエリア')
+        a_num += 1
+      else:
+        a_num = a_num   
       
     query_area = "" 
     if a_num == 0:
@@ -88,7 +108,7 @@ def home():
 # home.html　部分(basic_search)部分
 @app.route("/basic_search", methods=['GET', 'POST'])
 def basic_search():
-  con = sqlite3.connect("test.db")
+  con = sqlite3.connect("test2.db")
   cur = con.cursor()
   page = 1
 
