@@ -1,0 +1,20 @@
+.container {
+    width: 800px;
+    margin: 0 auto;
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+.headerTitle {
+    text-align: center;
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+.headerTime {
+    text-align: center;
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+p {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: bold;
+}

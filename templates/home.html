@@ -8,40 +8,44 @@
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
 		<script type="text/javascript" src="{{ url_for('static', filename='js/home.js') }}"></script>"
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;700&display=swap" rel="stylesheet">
 	</head>
 	<body>
 		<div class="container">
 			<header>
 				<div class="row">
-					<div class="col-sm-8">
+					<div class="col-sm-7 headerTitle">
 						<h1>何食べる？</h1>
 					</div>
-					<div class="col-sm-4">
-						<p id="currentTime">時刻</p>
-					</div>
+					<div class="col-sm-5 headerTime">
+						<a>現在時刻</a>
+						<a id="currentTime"></a>
+						<input type="button" value="更新" onclick="koushin()">
 				</div>
 			</header>
 			<form method="POST" action="basic_search">
-				<summary>入力してください</summary>
 				<table>
-					<tr><p>お店のエリア</p></tr>
+					<tr><p>エリアから探す</p></tr>
 					<tr>
-						<label><input type="checkbox" name="area" value="1">春日1・2丁目</label>
-						<label><input type="checkbox" name="area" value="2">春日3丁目</label>
-						<label><input type="checkbox" name="area" value="3">春日4丁目</label>
-						<label><input type="checkbox" name="area" value="4">吾妻・竹園(つくばセンター周辺)</label>
-						<label><input type="checkbox" name="area" value="5">天久保1丁目</label>
-						<label><input type="checkbox" name="area" value="6">天久保2丁目</label>
-						<label><input type="checkbox" name="area" value="7">天久保3丁目</label>
-						<label><input type="checkbox" name="area" value="8">桜・天久保4丁目</label>
-						<label><input type="checkbox" name="area" value="9">車が必須なエリア</label>
+						<label><input type="checkbox" name="area" value="1">春日1・2丁目</label><br />
+						<label><input type="checkbox" name="area" value="2">春日3丁目</label><br />
+						<label><input type="checkbox" name="area" value="3">春日4丁目</label><br />
+						<label><input type="checkbox" name="area" value="4">吾妻・竹園(つくばセンター周辺)</label><br />
+						<label><input type="checkbox" name="area" value="5">天久保1丁目</label><br />
+						<label><input type="checkbox" name="area" value="6">天久保2丁目</label><br />
+						<label><input type="checkbox" name="area" value="7">天久保3丁目</label><br />
+						<label><input type="checkbox" name="area" value="8">桜・天久保4丁目</label><br />
+						<label><input type="checkbox" name="area" value="9">車が必須なエリア</label><br />
 					</tr>
-					<tr><p>予算はいくら？</p></tr>
+					<br />
+					<tr><p>予算から探す</p></tr>
 					<tr>
 						<input type="text" name="budget" placeholder="">
 						<label>円まで</label>
 					</tr>
-					<tr><p><input type="submit" value="submit"></p></tr>
+					<br />
+					<tr><p><input type="submit" value="検索"></p></tr>
 				</table>
 			</form>
 			<hr>
