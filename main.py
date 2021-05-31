@@ -120,10 +120,20 @@ def basic_search():
   query = make_query(budget,areas)
 
   displays_list = []
-  displays_count = 0
   for row in cur.execute(query):
-      displays_count += 1
-      displays_list.append(row)
+    displays_list.append(row)
+
+  store_list = []
+  for a in range(len(displays_list)):
+    if displays_list[a][1] in store_list:
+      pass
+    else:
+      store_list.append(displays_list[a][1])
+  
+  test_link = 'https://tblg.k-img.com/restaurant/images/Rvw/149887/150x150_square_149887167.jpg'
+  test_link2 = 'https://tblg.k-img.com/restaurant/images/Rvw/149887/150x150_square_149887177.jpg'
+  store_link = 'https://tabelog.com/chiba/A1205/A120504/12038732/'
+
   return render_template('results.html', **locals())
   con.close()
 

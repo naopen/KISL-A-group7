@@ -5,7 +5,7 @@
         <meta charset='utf-8'>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/result.css') }}">
-		<script type="text/javascript" src="{{ url_for('static', filename='js/result.js') }}"></script>"
+		<script type="text/javascript" src="{{ url_for('static', filename='js/result.js') }}"></script>
 		<link rel="preconnect" href="https://fonts.gstatic.com">
     </head>
     <body>
@@ -15,34 +15,47 @@
                     <a href="/home.html">検索画面に戻る</a>
                 </div>
             </header>
-            <!-- デバッグ -->
-            <p> areas : {{ areas }} </p>
-            <p> budget : {{ budget }} </p>
-            <p>query : {{ query }}</p>
-            <!-- デバッグ -->
             <hr>
-            {% for row in range(displays_count) %}
+            {% for store in store_list %}
             <div>
-                <div class="shopName">
-                    {{ displays_list[row][1] }}
-                </div>
-                <div class="shopAddress">
-                    <a>エリア　　　：</a>
-                    {{ displays_list[row][2] }}
-                </div>
                 <div>
-                    <a>ジャンル　　：</a>
-                    {{ displays_list[row][3] }}
+                    <div>
+                        <img src="{{ test_link }}" width="150" height="150" />
+                    </div>
+                    <div>
+                        {{ store }}
+                    </div>
+                    <div>
+                        <a>ジャンル　：</a>
+                    </div>
+                    <div>
+                        <a>営業時間　：</a>
+                    </div>
+                    <div>
+                        <a>エリア　：</a>
+                    </div>
+                    <div>
+                        <a href= "{{ store_link }}" >お店のリンク</a>
+                    </div>
                 </div>
-                <div>
-                    <a>メニュー名　：</a>
-                    {{ displays_list[row][4] }}
-                </div>
-                <div>
-                    <a>値段　　　　：</a>
-                    {{ displays_list[row][5] }}
-                    <a>円</a>
-                </div>
+                {% for n in range(displays_list|length) %}
+                    {% if displays_list[n][1] == store %}
+                    <div>
+                        <div>
+                            <img src="{{ test_link2 }}" width="100" height="100" />
+                        </div>
+                        <div>
+                            <a>メニュー名　：</a>
+                            {{ displays_list[n][4] }}
+                        </div>
+                        <div>
+                            <a>値段　　　　：</a>
+                            {{ displays_list[n][5] }}
+                            <a>円</a>
+                        </div>
+                    </div>
+                    {% endif %}
+                {% endfor %}
             </div>
             <hr>
             {% endfor %}
