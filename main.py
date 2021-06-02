@@ -124,15 +124,17 @@ def basic_search():
     displays_list.append(row)
 
   store_list = []
+  closed_days = "水曜日"
+  open_time = "10:00〜18:00"
+  store_link = 'https://tblg.k-img.com/restaurant/images/Rvw/148711/640x640_rect_148711305.jpg'
+  food_link = 'https://tblg.k-img.com/restaurant/images/Rvw/148711/640x640_rect_148711459.jpg'
   for a in range(len(displays_list)):
     if displays_list[a][1] in store_list:
       pass
     else:
-      store_list.append(displays_list[a][1])
-  
-  test_link = 'https://tblg.k-img.com/restaurant/images/Rvw/149887/150x150_square_149887167.jpg'
-  test_link2 = 'https://tblg.k-img.com/restaurant/images/Rvw/149887/150x150_square_149887177.jpg'
-  store_link = 'https://tabelog.com/chiba/A1205/A120504/12038732/'
+      store_list.append([displays_list[a][1], displays_list[a][2], 
+          displays_list[a][3], open_time, closed_days, 
+          store_link, food_link])
 
   return render_template('results.html', **locals())
   con.close()
