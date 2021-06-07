@@ -4,6 +4,17 @@
     font-family: 'Noto Sans JP', sans-serif;
 }
 
+header {
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+hr {
+    border-width: 4px;
+    color: #2E99A9;
+    margin: 30px 0;
+}
+
 .headerTitle {
     text-align: center;
     font-family: 'Noto Sans JP', sans-serif;
@@ -14,7 +25,86 @@
     font-family: 'Noto Sans JP', sans-serif;
 }
 
+
+.budgetSlider {
+    margin: 14px;
+}
+
 p {
     font-family: 'Noto Sans JP', sans-serif;
     font-weight: bold;
+}
+
+.areaSearch p{
+    margin: 10px;
+}
+
+.daigakuMap {
+    width: 700px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #d9f2f5;
+}
+
+img {
+    width: 100%;
+}
+
+/*スマホ対応*/
+.daigakuMap img{
+    max-width: 100%;
+    height: auto;
+    border: 0;
+    -webkit-backface-visibility: hidden;
+}
+
+.btn{
+    position: absolute;
+}
+
+.area1 {
+    top: 310px;
+    left: 10px;
+}
+
+.area2 {
+    top: 200px;
+    left: 10px;
+}
+
+.area3 {
+    top: 165px;
+    left: 170px;
+}
+
+.area4 {
+    top: 450px;
+    left: 505px;
+}
+
+.area5 {
+    top: 357px;
+    left: 440px;
+}
+
+.area6 {
+    top: 270px;
+    left: 440px;
+}
+
+.area7 {
+    top: 121px;
+    left: 413px;
+}
+
+.area8 {
+    top: 15px;
+    left: 483px;
+}
+
+.area9 {
+    top: 15px;
+    left: 10px;
 }
