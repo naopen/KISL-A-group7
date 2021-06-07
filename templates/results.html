@@ -1,56 +1,105 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>お店一覧</title>
-        <meta charset='utf-8'>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-		<link rel="stylesheet" href="{{ url_for('static', filename='css/result.css') }}">
-		<script type="text/javascript" src="{{ url_for('static', filename='js/result.js') }}"></script>"
-		<link rel="preconnect" href="https://fonts.gstatic.com">
-    </head>
-    <body>
+<html lang="ja">
+  <head>
+    <title>お店一覧</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  </head>
+  <body>
+    <!-- ヘッダー部分1 -->
+    <div class="collapse bg-inverse" id="navbarHeader">
         <div class="container">
-            <header>
-                <div>
-                    <a href="/home.html">検索画面に戻る</a>
-                </div>
-            </header>
-            <!-- デバッグ -->
-            <p> areas : {{ areas }} </p>
-            <p> budget : {{ budget }} </p>
-            <p>query : {{ query }}</p>
-            <!-- デバッグ -->
-            <hr>
-            {% for row in range(displays_count) %}
-            <div>
-                <div class="shopName">
-                    {{ displays_list[row][1] }}
-                </div>
-                <div class="shopAddress">
-                    <a>エリア　　　：</a>
-                    {{ displays_list[row][2] }}
-                </div>
-                <div>
-                    <a>ジャンル　　：</a>
-                    {{ displays_list[row][3] }}
-                </div>
-                <div>
-                    <a>メニュー名　：</a>
-                    {{ displays_list[row][4] }}
-                </div>
-                <div>
-                    <a>値段　　　　：</a>
-                    {{ displays_list[row][5] }}
-                    <a>円</a>
+          <div class="row">
+            <div class="col-sm-8 py-4">
+              <h4 class="text-white">About</h4>
+              <p class="text-muted">みなさんのつくばで生活していく上での食生活が充実しますように！</p>
+            </div>
+            <div class="col-sm-4 py-4">
+              <h4 class="text-white">Contact</h4>
+              <ul class="list-unstyled">
+                <li><a href="https://www.tsukuba.ac.jp/" class="text-white">筑波大学</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="navbar navbar-inverse bg-inverse">
+        <div class="container d-flex justify-content-between">
+          <a href="#" class="navbar-brand">何食べる？</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+    </div>
+  　<!-- ヘッダー部分1 -->
+    <!-- ヘッダー部分2 -->
+    <section class="jumbotron text-center">
+        <div class="container">
+          <h1 class="jumbotron-heading">検索結果</h1>
+          <p class="lead text-muted">お店ごとに条件にあったメニューをおすすめします！</p>
+          <p>
+            <a href="/home.html" class="btn btn-secondary">検索画面に戻る</a>
+          </p>
+        </div>
+    </section>
+    <!-- ヘッダー部分2 -->
+
+    <!-- 中央部分 -->
+    <div class="album text-muted">
+        <!-- ここ繰り返す -->
+        {% for store in store_dict %}
+        <div class="container">
+            <!-- お店 -->
+            <div class="card mb-3">
+                <img class="card-img-top" src="{{ store_dict[store][4] }}" alt="Card image cap">
+                <div class="card-block">
+                    <h4 class="card-title">{{ store }}</h4>
+                    <p class="card-text">{{ store_dict[store][1] }} 営業時間 {{ store_dict[store][2] }} 定休日 {{ store_dict[store][3] }}</p>
+                    <p class="card-text"><small class="text-muted">{{ store_dict[store][0] }}</small></p>
                 </div>
             </div>
-            <hr>
-            {% endfor %}
-            <footer>
-                <table class="footer">
-                    <a>test version by tanebe</a>
-                </table>
-            </footer>
+            <!-- お店 -->
+            <div class="row">
+                <!-- ここ繰り返す -->
+                {% for n in range(displays_list|length) %}
+                    {% if displays_list[n][1] == store %}
+                    <!-- メニュー -->
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <!-- <img class="card-img-top" src="{{ store[6] }}" alt="Card image cap"> -->
+                            <div class="card-block">
+                                <h4 class="card-title">{{ displays_list[n][4] }}</h4>
+                                <p class="card-text">¥{{ displays_list[n][5] }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- メニュー -->
+                    {% endif %}
+                {% endfor %}
+                <!-- ここまで繰り返す -->
+          </div>
+      </div>
+      {% endfor %}
+      <!-- ここまで繰り返す -->
+    </div>
+    <!-- 中央部分 -->
+
+    <!-- フッター部分 -->
+    <section class="jumbotron text-center">
+        <div class="container">
+          <h1 class="jumbotron-heading">何食べる？</h1>
+          <p class="lead text-muted">test version by tanebe</p>
         </div>
-    </body>
+    </section>
+    <!-- フッター部分 -->
+
+    <!-- jQuery first, then Tether, then Bootstrap JS. -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+  </body>
 </html>
