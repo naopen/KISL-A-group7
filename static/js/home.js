@@ -1,12 +1,12 @@
-window.onload = function(){
-    var now = new Date();
+var addZero = function(value) {
+    if (value < 10) {
+        value = '0' + value;
+        }
+    return value;
+};
 
-    var addZero = function(value) {
-        if (value < 10) {
-            value = '0' + value;
-            }
-        return value;
-    };
+function showClock() {
+    var now = new Date();
 
     var seconds = now.getSeconds();
     var minutes = now.getMinutes();
@@ -16,18 +16,15 @@ window.onload = function(){
     hours = addZero(hours);
 
     document.getElementById('currentTime').innerHTML = hours + ':' + minutes + ':' + seconds;
+}
+
+window.onload = function(){
+    setInterval('showClock()',1000);
 };
 
-/*
-(timer)ミリ秒毎にページを更新するプログラム
 
-const timer = 10000
-window.addEventListener('load',function(){
-    setInterval('location.reload()',timer)
-});
-*/
-
-//更新ボタン
+/*更新ボタン
 function koushin(){
     location.reload();
 }
+*/
