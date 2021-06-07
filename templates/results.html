@@ -51,22 +51,22 @@
     <!-- 中央部分 -->
     <div class="album text-muted">
         <!-- ここ繰り返す -->
-        {% for store in store_list %}
+        {% for store in store_dict %}
         <div class="container">
             <!-- お店 -->
             <div class="card mb-3">
-                <img class="card-img-top" src="{{ store[5] }}" alt="Card image cap">
+                <img class="card-img-top" src="{{ store_dict[store][4] }}" alt="Card image cap">
                 <div class="card-block">
-                    <h4 class="card-title">{{ store[0] }}</h4>
-                    <p class="card-text">{{ store[2] }} 営業時間 {{ store[3] }} 定休日 {{ store[4] }}</p>
-                    <p class="card-text"><small class="text-muted">{{ store[1] }}</small></p>
+                    <h4 class="card-title">{{ store }}</h4>
+                    <p class="card-text">{{ store_dict[store][1] }} 営業時間 {{ store_dict[store][2] }} 定休日 {{ store_dict[store][3] }}</p>
+                    <p class="card-text"><small class="text-muted">{{ store_dict[store][0] }}</small></p>
                 </div>
             </div>
             <!-- お店 -->
             <div class="row">
                 <!-- ここ繰り返す -->
                 {% for n in range(displays_list|length) %}
-                    {% if displays_list[n][1] == store[0] %}
+                    {% if displays_list[n][1] == store %}
                     <!-- メニュー -->
                     <div class="col-sm-6">
                         <div class="card">
