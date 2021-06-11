@@ -107,7 +107,7 @@ def home():
 # home.html　部分(basic_search)部分
 @app.route("/basic_search", methods=['GET', 'POST'])
 def basic_search():
-  con = sqlite3.connect("test3.db") # database変えた場合はここを変える
+  con = sqlite3.connect("test4.db") # database変えた場合はここを変える
   cur = con.cursor()
   page = 1
 
