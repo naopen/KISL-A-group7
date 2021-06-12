@@ -107,7 +107,7 @@ def home():
 # home.html　部分(basic_search)部分
 @app.route("/basic_search", methods=['GET', 'POST'])
 def basic_search():
-  con = sqlite3.connect("test3.db")
+  con = sqlite3.connect("test4.db") # database変えた場合はここを変える
   cur = con.cursor()
   page = 1
 
@@ -119,20 +119,17 @@ def basic_search():
 
   query = make_query(budget,areas)
 
-  displays_list = []
+  displays_list = [] # [id,store_name,store_area,store_genre,item_name,item_price,open_time,close_day,store_url]
   for row in cur.execute(query):
     displays_list.append(row)
 
-  closed_days = "水曜日"
-  open_time = "10:00〜18:00"
-  store_link = 'https://tblg.k-img.com/restaurant/images/Rvw/148711/640x640_rect_148711305.jpg'
-  food_link = 'https://tblg.k-img.com/restaurant/images/Rvw/148711/640x640_rect_148711459.jpg'
+
   store_dict = {}
   for a in range(len(displays_list)):
     if displays_list[a][1] in store_dict.keys():
       pass
     else:
-      store_dict[displays_list[a][1]]=[displays_list[a][2], displays_list[a][3], open_time, closed_days, store_link, food_link]
+      store_dict[displays_list[a][1]]=[displays_list[a][2], displays_list[a][3], displays_list[a][6], displays_list[a][7], displays_list[a][8]]
 
   return render_template('results.html', **locals())
   con.close()
