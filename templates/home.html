@@ -52,14 +52,12 @@
 					<div class="budgetSearch">
 						<p>予算から探す</p>
 						<div class="budgetSlider">
-							<input type="range" value="1" min="100" max="3000" step="100" 
+							<input type="range" name="budget" value="1" min="100" max="3000" step="100" 
 							oninput="document.getElementById('output1').value=this.value">
-							<output id="output1">100円</output>
-						</div>
-						<tr>
-							<input type="text" name="budget" placeholder="">
+							<output id="output1">100</output>
 							<label>円まで</label>
-						</tr>
+						</div>
+
 						<tr><p><input type="submit" value="検索"></p></tr>
 					</div>
 					
