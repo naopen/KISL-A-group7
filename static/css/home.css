@@ -25,14 +25,30 @@ hr {
     font-family: 'Noto Sans JP', sans-serif;
 }
 
+.budgetSearch {
+    margin: 15px auto;
+}
 
 .budgetSlider {
-    margin: 14px;
+    margin: 1px;
 }
 
 p {
     font-family: 'Noto Sans JP', sans-serif;
     font-weight: bold;
+}
+
+.searchButtonArea {
+    text-align: center;
+}
+
+.searchButton {
+    width: 200px;
+    margin: 10px auto;
+    background-color: #2096F3;
+    color: #fff;
+    padding: 15px;
+    border-radius: 5px;
 }
 
 .areaSearch p{
