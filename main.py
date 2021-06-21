@@ -1,6 +1,10 @@
+#------------------------ import ------------------------
+
+from flask import Flask, render_template, escape, request
+import sqlite3
+
 #------------------------ def ------------------------ 
 
-#通常のQueryを作成するbasic_query関数を定義
 def is_int(s):
     try:
         int(s)
@@ -89,12 +93,17 @@ def make_query(budget,areas):
     else:
       query += ";"
 
-    return query
+    con = sqlite3.connect("database.db")
+    cur = con.cursor()
+    displays_list = []
+    # [id,store_name,store_area,store_genre,item_name,item_price,open_time,close_day,store_url]
+    for row in cur.execute(query):
+      displays_list.append(row)
+    con.close()
+
+    return displays_list
 
 #------------------------ Flask ------------------------ 
-
-from flask import Flask, render_template, escape, request
-import sqlite3
 
 #Flaskを定義する 定義したappをrunしてWebアプリケーション
 app = Flask(__name__)
@@ -107,23 +116,11 @@ def home():
 # home.html　部分(basic_search)部分
 @app.route("/basic_search", methods=['GET', 'POST'])
 def basic_search():
-  con = sqlite3.connect("database.db") # database変えた場合はここを変える
-  cur = con.cursor()
-  page = 1
-
-  #予算
   budget = request.form["budget"]
-
-  #エリア
-  areas = request.form.getlist('area') # ['1', '2', '4']
-
-  query = make_query(budget,areas)
-
-  displays_list = [] # [id,store_name,store_area,store_genre,item_name,item_price,open_time,close_day,store_url]
-  for row in cur.execute(query):
-    displays_list.append(row)
-
-
+  # budget = 1500
+  areas = request.form.getlist('area')
+  # area = ['1', '2', '4']
+  displays_list = make_query(budget,areas)
   store_dict = {}
   for a in range(len(displays_list)):
     if displays_list[a][1] in store_dict.keys():
@@ -132,8 +129,6 @@ def basic_search():
       store_dict[displays_list[a][1]]=[displays_list[a][2], displays_list[a][3], displays_list[a][6], displays_list[a][7], displays_list[a][8]]
 
   return render_template('results.html', **locals())
-  con.close()
 
 if __name__ == "__main__":
-  #app.run()
-  app.run(debug=True) # http://127.0.0.1:5000
+  app.run()
